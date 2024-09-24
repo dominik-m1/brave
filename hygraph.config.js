@@ -1,22 +1,15 @@
 module.exports = {
   locales: [
     {
-      value: 'en',
-      label: 'English',
+      value: 'pl',
+      label: 'Polski',
       default: true
     },
-    {
-      value: 'de',
-      label: 'German'
-    }
   ],
   currencies: [
     {
-      code: 'GBP',
+      code: 'PLN',
       default: true
     },
-    {
-      code: 'EUR'
-    }
   ]
 }

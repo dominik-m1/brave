@@ -11,8 +11,8 @@ function Header({ pages = [] }) {
   const { activeCurrency } = useSettingsContext()
 
   return (
-    <header className="max-w-7xl mx-auto bg-white flex-grow flex items-center justify-between px-4 sm:px-6">
-      <div className="py-6 w-full">
+    <header className="shadow-lg max-w-7xl mx-auto bg-white flex-grow flex items-center justify-between px-4 sm:px-6">
+      <div className="py-6 w-full fixed top-0 max-w-7xl bg-white z-10">
         <nav className="flex items-center justify-between flex-wrap space-x-4">
           <Link href="/">
             <HygraphSVG className="h-auto text-primary w-5" />
