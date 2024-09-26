@@ -27,6 +27,7 @@
     "react-hook-form": "^7.43.9",
     "react-swiper": "^0.1.5",
     "react-use-cart": "^1.13.0",
+    "sass": "^1.79.3",
     "stripe": "^8.137.0",
     "swiper": "^11.1.14",
     "swr": "^2.1.2",

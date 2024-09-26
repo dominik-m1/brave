@@ -31,7 +31,7 @@ function Header({ pages = [] }) {
                         {page.name}
                       </span>
                             <span
-                                className="bg-customRed absolute left-0 -bottom-4 w-full h-[4px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                                className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                             ></span>
                           </Link>
                         </li>

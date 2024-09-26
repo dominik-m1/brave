@@ -6,7 +6,8 @@ module.exports = {
         quicksand: ['Quicksand', 'monospace'],
       },
       colors: {
-        customRed: 'rgb(175, 37, 44)'
+        customRed: 'rgb(175, 37, 44)',
+        lightGray: '#d4d7dd',
       }
     }
   },
