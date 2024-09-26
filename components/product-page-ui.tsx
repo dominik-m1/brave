@@ -10,6 +10,7 @@ import ProductReviews from '@/components/product-reviews'
 import { useSettingsContext } from '@/context/settings'
 
 function ProductPageUI({ product }) {
+  console.warn(product);
   const { addItem } = useCart()
   const router = useRouter()
   const { activeCurrency } = useSettingsContext()

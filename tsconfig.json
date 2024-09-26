@@ -6,7 +6,8 @@
       "@/icons": ["./components/icons"],
       "@/ui/form": ["./components/ui/form"],
       "@/ui/button": ["./components/ui/button"],
-      "@/svgs": ["./components/svgs"]
+      "@/svgs": ["./components/svgs"],
+      "@/assets": ["./assets"],
     },
     "target": "es5",
     "lib": [
