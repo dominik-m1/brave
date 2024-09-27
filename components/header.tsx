@@ -39,7 +39,7 @@ function Header({ pages = [] }) {
                   </ul>
               ) : null}
             </div>
-            <div>
+            <div className="absolute left-1/2 -translate-x-1/2">
               <Link href="/">
                 <Image src={logo} alt="Logo" width={50} height={25} />
               </Link>
