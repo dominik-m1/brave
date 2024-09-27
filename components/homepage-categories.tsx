@@ -29,7 +29,7 @@ const HomepageCategories = ({ categories }: IProps) => {
                     </div>
                     <div className="py-4 px-10 absolute bottom-0 bg-white">
                         <h3 className="text-5xl font-semibold">{category.name}</h3>
-                        <p className="text-gray-600">{category.description}</p>
+                        <p className="text-gray-500">{category.description}</p>
                     </div>
                 </Link>
             ))}
