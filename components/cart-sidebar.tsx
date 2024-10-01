@@ -50,15 +50,15 @@ const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
                                         <Link href={`/product/${item.slug}`}>
                                             {item.name}
                                         </Link>
-                                        <p className="text-gray-500">
+                                        <p className="text-gray-500 text-xs">
                                             Ilość: {item.quantity}
                                         </p>
                                         {item.variant && (
-                                            <p className="text-gray-500">
+                                            <p className="text-gray-500 text-xs">
                                                 {item.variant.name}
                                             </p>
                                         )}
-                                        <p className="text-gray-500">
+                                        <p className="text-gray-500 text-xs">
                                             {formatCurrencyValue({
                                                 currency: activeCurrency,
                                                 value: item.itemTotal,
