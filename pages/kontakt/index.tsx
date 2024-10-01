@@ -1,10 +1,13 @@
 import getPageData from "@/lib/get-page-data";
+import SectionTitle from "@/components/ui/typography/sectionTitle";
+import ContactForm from "@/components/contact-form";
 
 function ContactPage() {
 
     return (
         <section className="mt-40 max-w-7xl mx-auto">
-            introduce contact form
+            <SectionTitle title="SKONTAKTUJ SIĘ Z NAMI"/>
+            <ContactForm />
         </section>
     );
 }

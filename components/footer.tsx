@@ -4,7 +4,7 @@ import { GitHubIcon, TwitterIcon } from '@/icons'
 
 function Footer({ categories = [], footerPages = [] }) {
   return (
-    <footer className="bg-white" aria-labelledby="footerHeading">
+    <footer className="max-w-7xl mx-auto bg-white" aria-labelledby="footerHeading">
       <h2 id="footerHeading" className="sr-only">
         Footer
       </h2>
