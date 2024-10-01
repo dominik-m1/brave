@@ -5,7 +5,7 @@ const url = 'https://commerce.withheadlesscms.com'
 
 const seo = {
   title,
-  titleTemplate: '%s | Hygraph',
+  titleTemplate: '%s | BeBrave',
   description,
   openGraph: {
     description,

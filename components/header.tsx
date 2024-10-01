@@ -30,7 +30,7 @@ function Header({ pages = [] }) {
   return (
       <header className="mx-auto bg-white flex-grow flex items-center justify-between">
         <div className="p-6 w-full fixed top-0 bg-white z-10 shadow-lg">
-          <nav className="flex items-center justify-between flex-wrap">
+          <nav className="flex items-center justify-between flex-wrap max-w-7xl mx-auto">
             <div>
               {pages.length ? (
                   <ul className="hidden md:mx-auto md:block md:flex-grow">
@@ -43,9 +43,9 @@ function Header({ pages = [] }) {
                               href={`/${page.type.toLowerCase()}/${page.slug}`}
                               className="relative group"
                           >
-                      <span className="uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
-                        {page.name}
-                      </span>
+                          <span className="text-xs uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
+                            {page.name}
+                          </span>
                             <span
                                 className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                             ></span>
@@ -54,9 +54,9 @@ function Header({ pages = [] }) {
                     ))}
                     <li className="block my-4 md:inline-block md:my-0 relative group">
                       <Link href="/o-nas" className="relative group">
-                    <span className="uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
-                      O nas
-                    </span>
+                        <span className="text-xs uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
+                          O nas
+                        </span>
                         <span
                             className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                         ></span>
@@ -64,9 +64,9 @@ function Header({ pages = [] }) {
                     </li>
                     <li className="block my-4 md:inline-block md:my-0 relative group">
                       <Link href="/kontakt" className="relative group">
-                    <span className="uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
-                      Kontakt
-                    </span>
+                        <span className="text-xs uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
+                          Kontakt
+                        </span>
                         <span
                             className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
                         ></span>

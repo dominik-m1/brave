@@ -27,8 +27,8 @@ const HomepageCategories = ({ categories }: IProps) => {
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
                         />
                     </div>
-                    <div className="py-4 px-10 absolute bottom-0 bg-white">
-                        <h3 className="text-5xl font-semibold">{category.name}</h3>
+                    <div className="py-4 px-10 absolute bottom-0 bg-white border-b border-l">
+                        <h3 className="text-2xl font-semibold">{category.name}</h3>
                         <p className="text-gray-500">{category.description}</p>
                     </div>
                 </Link>

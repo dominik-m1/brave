@@ -57,7 +57,7 @@ export default async (req, res) => {
       mode: 'payment',
       line_items,
       locale,
-      payment_method_types: ['card'],
+      payment_method_types: ['card', "p24", "blik"],
       success_url: `${success_url}?id={CHECKOUT_SESSION_ID}`,
       ...rest
     })

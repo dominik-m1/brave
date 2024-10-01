@@ -97,6 +97,7 @@ const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
                         ))}
                     </div>
                 </div>
+                <p className="text-gray-400">Koszty dostawy poznasz w kolejnych krokach</p>
                 <div className="mt-6 h-12 flex justify-center items-center uppercase relative group overflow-hidden border border-black transition-colors duration-500">
                     <Link
                         href="/cart"
