@@ -34,11 +34,12 @@ body {
     }
 }
 
-.product-description {
+.product-description,
+.footer-menu {
     li {
         list-style: disc;
     }
-    h3 {
+    h1,h2,h3,h4,h5,h6 {
         @apply text-xl font-bold mt-4 mb-2;
     }
 }
