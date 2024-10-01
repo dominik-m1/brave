@@ -11,7 +11,7 @@ function IndexPage({ products, homepageBanners, highlightedCategories }) {
   return (
       <main>
         <HomepageBanners banners={homepageBanners} />
-        <SectionTitle title="FEATURED"/>
+        <SectionTitle title="NASZE PRODUKTY"/>
         <ProductSlider products={products} />
         <HomepageCategories categories={highlightedCategories}/>
       </main>

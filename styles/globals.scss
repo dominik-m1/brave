@@ -43,3 +43,7 @@ body {
         @apply text-xl font-bold mt-4 mb-2;
     }
 }
+
+.cart-items-list {
+    scrollbar-width: thin;
+}

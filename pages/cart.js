@@ -89,7 +89,7 @@ function Cart() {
   if (isEmpty) return <p>Your cart is empty</p>
 
   return (
-    <React.Fragment>
+    <section className="max-w-7xl mx-auto mt-28">
       <SEO title="Cart" />
       {items.map((item) => {
         return (
@@ -109,13 +109,18 @@ function Cart() {
                 <Link href={`/products/${item[router.locale].slug}`} className="text-gray-800 font-medium text-sm md:text-base">
                   {item[router.locale].name}
                 </Link>
+                {item.variant && (
+                    <p className="text-gray-500 text-xs">
+                      {item.variant.name}
+                    </p>
+                )}
                 <button
                   className="text-gray-400 hover:text-indigo-600 text-xs flex items-center focus:outline-none"
                   onClick={() => removeItem(item.id)}
                   disabled={submissionLoading}
                 >
-                  <XSmallIcon className="h-3 w-3" />
-                  Remove
+                  <XSmallIcon className="h-3 w-3 mr-2" />
+                  USUŃ
                 </button>
               </div>
             </div>
@@ -149,7 +154,7 @@ function Cart() {
                     currency: activeCurrency,
                     value: item.price
                   })}{' '}
-                  each
+                  - cena 1 szt.
                 </p>
               )}
             </div>
@@ -159,20 +164,53 @@ function Cart() {
       <div className="mt-3 md:mt-6 py-3 md:py-6 border-t-2 border-gray-50">
         <div className="flex flex-col items-end">
           <div className="flex flex-col items-end mb-3">
-            <span className="text-gray-700">Sub total</span>
-            <span className="text-xl font-bold text-indigo-600">
+            <span className="text-gray-700">Łączna kwota</span>
+            <span className="text-xl font-bold">
               {formatCurrencyValue({
                 currency: activeCurrency,
                 value: cartTotal
               })}
             </span>
           </div>
-          <Button onClick={handleClick} disabled={submissionLoading}>
-            Checkout
-          </Button>
+          <div className="w-[200px] h-12 flex justify-center items-center uppercase relative group overflow-hidden border border-black transition-colors duration-500">
+            <Link
+                href="/cart"
+                className="flex font-bold items-center w-full h-full justify-center z-10 text-white group-hover:text-black "
+                onClick={handleClick}
+            >
+              <span className="mr-1">Zamów - </span>
+              <span>
+                {formatCurrencyValue({
+                  currency: activeCurrency,
+                  value: cartTotal,
+                })}
+              </span>
+            </Link>
+
+            {/* Sliding background effect */}
+            <div className="absolute inset-0 bg-black transition-transform duration-500 ease-out group-hover:translate-x-full"></div>
+            <div className="absolute inset-0 bg-white transition-transform duration-500 ease-out translate-x-[-100%] group-hover:translate-x-0"></div>
+
+            {/* Font color transition and border */}
+            <div className="absolute inset-0 text-black transition-colors duration-500 ease-out flex justify-center items-center z-0 group-hover:text-black group-hover:border-black">
+              <Link
+                  href="/cart"
+                  className="flex items-center w-full h-full justify-center font-bold"
+                  onClick={handleClick}
+              >
+                <span className="mr-1">Zamów - </span>
+                <span>
+                {formatCurrencyValue({
+                  currency: activeCurrency,
+                  value: cartTotal,
+                })}
+              </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </React.Fragment>
+    </section>
   )
 }
 
