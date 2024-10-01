@@ -11,7 +11,7 @@ function ProductCard({ id, images = [], name, price, slug }) {
   return (
       <article key={id}>
         <Link href={`/products/${slug}`} className="group no-underline w-full h-full flex">
-          <div className="rounded-lg cursor-pointer w-full overflow-hidden relative px-3 py-6 md:px-6">
+          <div className="cursor-pointer w-full overflow-hidden relative px-3 py-6 md:px-6">
             {primaryImage && (
                 <Image
                     src={primaryImage.url}

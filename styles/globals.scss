@@ -33,3 +33,12 @@ body {
         pointer-events: unset;
     }
 }
+
+.product-description {
+    li {
+        list-style: disc;
+    }
+    h3 {
+        @apply text-xl font-bold mt-4 mb-2;
+    }
+}

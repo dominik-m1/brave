@@ -49,6 +49,19 @@ function Header({ pages = [] }) {
                         ></span>
                       </Link>
                     </li>
+                    <li className="block my-4 md:inline-block md:my-0 relative group">
+                      <Link
+                          href="/kontakt"
+                          className="relative group"
+                      >
+                        <span className="uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
+                            Kontakt
+                          </span>
+                        <span
+                            className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                        ></span>
+                      </Link>
+                    </li>
                   </ul>
               ) : null}
             </div>

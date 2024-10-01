@@ -10,7 +10,7 @@ function Layout({ children, footer, navigation }) {
     <React.Fragment>
       <DefaultSeo {...defaultSeo} />
       <Header {...navigation} />
-      <div className="mx-auto px-4 sm:px-6 mt-26">{children}</div>
+      <div className="mx-auto mt-[72px]">{children}</div>
       <Footer {...footer} />
     </React.Fragment>
   )
