@@ -5,6 +5,8 @@ import getBlogPostsList from "@/lib/get-blog-posts-list";
 import getBlogPostById from "@/lib/get-blog-post-by-id";
 import ReactMarkdown from "react-markdown";
 import Image from 'next/image'
+import Owner from "@/components/owner";
+import blog from "@/pages/blog";
 
 interface IPost {
     id: string;
@@ -18,13 +20,21 @@ interface IPost {
         subTitle: string;
         description: string;
         image: string[]
-    }[]
+    }[];
+    owner: {
+        name: string;
+        description: string;
+        instagramUrl: string;
+        imageUrl: string;
+        mail: string;
+    }
 }
 
 interface IProps {
     blogPost: IPost
 }
 function BlogPost({ blogPost }: IProps) {
+    const tags = blogPost.tags.split("/")
     return (
         <section className="blog-post">
             <div className="mt-20 mx-auto max-w-5xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -86,6 +96,22 @@ function BlogPost({ blogPost }: IProps) {
                         </div>
                     </div>
                 ))}
+                <div className="mt-4">
+                    {tags.map((tag, index) => (
+                        <span
+                            key={index}
+                            className="bg-red-600 text-white text-sm font-semibold py-1 px-2 rounded-lg mr-2">
+                            {tag.trim()}
+                        </span>
+                    ))}
+                </div>
+                <Owner
+                    name={blogPost.owner.name}
+                    description={blogPost.owner.description}
+                    imageUrl={blogPost.owner.imageUrl}
+                    instagramUrl={blogPost.owner.instagramUrl}
+                    mail={blogPost.owner.mail}
+                />
             </div>
         </section>
     );

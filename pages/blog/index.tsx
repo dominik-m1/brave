@@ -21,7 +21,7 @@ function Blog({ blogCategories }) {
                     />
 
                     <div className="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                        <p className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">
+                        <p className="uppercase text-white text-2xl sm:text-3xl md:text-4xl font-bold">
                             {blogCategory.name}
                         </p>
                     </div>

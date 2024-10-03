@@ -15,6 +15,13 @@ export const getBlogPostByIdQuery = gql`
         description
         image
       }
+      owner {
+        name
+        description
+        instagramUrl
+        imageUrl
+        mail
+      }
     }
   }
 `

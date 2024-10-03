@@ -10,7 +10,7 @@ function FooterPageData({ footerPageData }) {
     return (
         <div className="mt-36 mb-20">
             <SectionTitle title={footerPageData.title} />
-            <div className="footer-menu max-w-2xl mx-auto">
+            <div className="footer-menu max-w-2xl mx-auto text-justify">
                 <ReactMarkdown>
                     {footerPageData.content.markdown}
                 </ReactMarkdown>
