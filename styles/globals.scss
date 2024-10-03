@@ -46,3 +46,14 @@
 .cart-items-list {
     scrollbar-width: thin;
 }
+
+.blog-post {
+    blockquote {
+        @apply text-xl text-black text-center my-6 font-semibold relative;
+
+        &::before {
+            content: "``";
+            @apply text-6xl absolute left-0;
+        }
+    }
+}

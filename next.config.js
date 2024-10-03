@@ -9,6 +9,10 @@ module.exports = {
         protocol: 'https',
         hostname: '**.graphassets.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+      },
     ],
     // Deprecate domain after asset migration
     domains: ['media.graphassets.com']

@@ -63,9 +63,9 @@ function Header({ pages = [] }) {
                       </Link>
                     </li>
                     <li className="block my-4 md:inline-block md:my-0 relative group">
-                      <Link href="/lookbook" className="relative group">
+                      <Link href="/kontakt" className="relative group">
                         <span className="text-xs uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
-                          Lookbook
+                          Kontakt
                         </span>
                         <span
                             className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
@@ -73,9 +73,19 @@ function Header({ pages = [] }) {
                       </Link>
                     </li>
                     <li className="block my-4 md:inline-block md:my-0 relative group">
-                      <Link href="/kontakt" className="relative group">
+                      <Link href="/blog" className="relative group">
                         <span className="text-xs uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
-                          Kontakt
+                          Blog
+                        </span>
+                        <span
+                            className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
+                        ></span>
+                      </Link>
+                    </li>
+                    <li className="block my-4 md:inline-block md:my-0 relative group">
+                      <Link href="/lookbook" className="relative group">
+                        <span className="text-xs uppercase text-lightgray hover:text-slategray py-2 px-3 font-medium">
+                          Lookbook
                         </span>
                         <span
                             className="bg-neutral-400 absolute left-0 -bottom-4 w-full h-[1px] bg-slategray transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
@@ -90,19 +100,21 @@ function Header({ pages = [] }) {
                 <Image src={logo} alt="Logo" width={50} height={25} />
               </Link>
             </div>
-            <div className="flex items-center cursor-pointer" onClick={toggleSidebar}>
-              <div>
-                <ShoppingCartIcon
-                    className="h-6 w-6 text-gray-400 mr-2"
-                    aria-hidden="true"
-                />
-              </div>
-              <span className="text-lightgray text-xs">
+            <div className="flex">
+              <div className="flex items-center cursor-pointer" onClick={toggleSidebar}>
+                <div>
+                  <ShoppingCartIcon
+                      className="h-6 w-6 text-gray-400 mr-2"
+                      aria-hidden="true"
+                  />
+                </div>
+                <span className="text-lightgray text-xs">
               {formatCurrencyValue({
                 currency: activeCurrency,
                 value: cartTotal,
               })}
             </span>
+              </div>
             </div>
           </nav>
         </div>
