@@ -2,13 +2,17 @@ import hygraphClient, {gql} from "@/lib/hygraph-client";
 
 export const getBlogPostsQuery = gql`
     query GetBlogPosts {
-        blogPosts{
+        blogPosts {
+            createdAt
             title
             id
             image
             blogCategories {
                 name
                 slug
+            }
+            content {
+                text
             }
         }
     }

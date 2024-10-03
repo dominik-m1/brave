@@ -17,12 +17,12 @@ interface IBlogPost {
 interface IProps {
     blogPosts: IBlogPost[]
 }
+export const getExcerpt = (content: string, length: number = 100) => {
+    if (content.length <= length) return content;
+    return content.substring(0, length) + '...';
+};
 
 function BlogPostsByCategory({ blogPosts }: IProps) {
-    const getExcerpt = (content: string, length: number = 100) => {
-        if (content.length <= length) return content;
-        return content.substring(0, length) + '...';
-    };
 
     return (
         <div className="mt-36 mb-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
