@@ -1,19 +1,36 @@
-import * as React from 'react'
-import { DefaultSeo } from 'next-seo'
+import * as React from 'react';
+import { DefaultSeo } from 'next-seo';
+import { motion } from 'framer-motion';
 
-import { defaultSeo } from 'next-seo.config'
-import Footer from '@/components/footer'
-import Header from '@/components/header'
+import { defaultSeo } from 'next-seo.config';
+import Footer from '@/components/footer';
+import Header from '@/components/header';
+
+const pageTransition = {
+    hidden: { opacity: 0, x: -100 },
+    enter: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 100 },
+};
 
 function Layout({ children, footer, navigation }) {
-  return (
-    <React.Fragment>
-      <DefaultSeo {...defaultSeo} />
-      <Header {...navigation} />
-      <div className="max-w-7xl mx-auto mt-[72px]">{children}</div>
-      <Footer {...footer} />
-    </React.Fragment>
-  )
+    return (
+        <React.Fragment>
+            <DefaultSeo {...defaultSeo} />
+            <Header {...navigation} />
+            <motion.div
+                key={children.key}
+                initial="hidden"
+                animate="enter"
+                exit="exit"
+                variants={pageTransition}
+                transition={{ type: 'tween', duration: 0.5 }}
+                className="max-w-7xl mx-auto mt-[72px]"
+            >
+                {children}
+            </motion.div>
+            <Footer {...footer} />
+        </React.Fragment>
+    );
 }
 
-export default Layout
+export default Layout;

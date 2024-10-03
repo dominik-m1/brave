@@ -28,7 +28,7 @@ const BraveVerificationPopup = () => {
                 <div className="flex justify-center">
                     <Image src={logo} alt="Logo" width={200} height={150} />
                 </div>
-                <p className="text-gray-700">You SHOULD BE BRAVE to enter this site!</p>
+                <p>You SHOULD BE BRAVE to enter this site!</p>
                 <div className="space-x-4">
                     <button
                         onClick={handleConfirm}

@@ -173,7 +173,7 @@ function ProductPageUI({ product }) {
                         id="quantity"
                         name="quantity"
                         value={variantQuantity}
-                        className="block appearance-none w-full bg-gainsboro border-2 border-black focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray"
+                        className="block appearance-none w-full bg-gainsboro border-2 border-gainsborofocus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray"
                         onChange={updateQuantity}
                     >
                       {Array.from({ length: 5 }, (_, i) => {
