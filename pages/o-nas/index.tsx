@@ -18,7 +18,7 @@ interface IProps {
 
 function AboutUs({ aboutUs }: IProps) {
     return (
-        <section className="mt-40">
+        <section className="mt-28">
             <SectionTitle title={aboutUs.title}/>
             <p className="mx-auto max-w-3xl text-justify text-base text-gray-500">
                 <ReactMarkdown>

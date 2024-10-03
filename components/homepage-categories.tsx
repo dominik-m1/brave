@@ -17,7 +17,7 @@ interface IProps {
 
 const HomepageCategories = ({ categories }: IProps) => {
     return (
-        <section className="flex justify-between items-center my-20">
+        <section className="flex justify-between items-center my-20 gap-16">
             {categories.map((category) => (
                 <Link key={category.id} className="relative w-1/3 overflow-hidden" href={`category/${category.slug}`}>
                     <div className="relative w-full h-[600px] overflow-hidden">

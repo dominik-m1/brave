@@ -3,7 +3,7 @@ interface IProps {
 }
 const SectionTitle = ({ title}: IProps) => {
     return (
-        <h2 className="my-20 text-center font-20 text-lightgray text-3xl">
+        <h2 className="my-10 text-center font-20 text-lightgray text-3xl">
             {title}
         </h2>
     )

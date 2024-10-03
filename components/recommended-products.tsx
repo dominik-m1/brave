@@ -3,7 +3,7 @@ import SectionTitle from "@/components/ui/typography/sectionTitle";
 
 const RecommendedProducts = ({ products }) => {
     return (
-        <section>
+        <section className="mt-20">
             <SectionTitle title="POLECANE"/>
             <ProductGrid products={products} />
         </section>

@@ -111,10 +111,10 @@ function ProductPageUI({ product }) {
           </div>
           <div className="px-6 md:py-3 lg:w-1/2">
             <div className="sticky top-28 max-w-lg">
-              <h1 className="uppercase font-bold md:text-4xl mb-3 text-primary leading-tight">
+              <h1 className="tracking-widest uppercase font-bold md:text-4xl mb-3 text-primary leading-tight">
                 {product.name}
               </h1>
-              <div className="mb-6">
+              <div className="mb-2">
                 <p className="font-semibold text-2xl text-slategray">
                   {formatCurrencyValue({
                     currency: activeCurrency,
@@ -143,7 +143,7 @@ function ProductPageUI({ product }) {
                             id="style"
                             name="style"
                             value={activeVariantId}
-                            className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
+                            className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray"
                             onChange={updateVariant}
                         >
                           {product.variants.map((variant) => (
@@ -173,7 +173,7 @@ function ProductPageUI({ product }) {
                         id="quantity"
                         name="quantity"
                         value={variantQuantity}
-                        className="block appearance-none w-full bg-gainsboro border-2 border-gainsboro focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray rounded-lg"
+                        className="block appearance-none w-full bg-gainsboro border-2 border-black focus:border-slategray px-4 py-3 pr-8 focus:outline-none focus:bg-white text-slategray focus:text-slategray"
                         onChange={updateQuantity}
                     >
                       {Array.from({ length: 5 }, (_, i) => {
@@ -195,7 +195,7 @@ function ProductPageUI({ product }) {
                   </div>
                 </div>
               </div>
-              <Button onClick={addToCart}>DODAJ DO KOSZYKA</Button>
+              <Button onClick={addToCart} label="DODAJ DO KOSZYKA" />
             </div>
           </div>
 

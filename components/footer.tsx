@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { GitHubIcon, TwitterIcon } from '@/icons'
+import { InstagramIcon } from '@/icons'
 
 function Footer({ categories = [], footerPages = [] }) {
   return (
@@ -59,13 +59,9 @@ function Footer({ categories = [], footerPages = [] }) {
         </div>
         <div className="mt-8 pt-8 md:flex md:items-center md:justify-between">
           <div className="flex space-x-6 md:order-2">
-            <Link href="https://twitter.com/hygraphcom" className="text-gray-400 hover:text-gray-500">
+            <Link href="https://www.instagram.com/bebrave_ofw/" className="text-gray-400 hover:text-gray-500" target="_blank">
               <span className="sr-only">Twitter</span>
-              <TwitterIcon className="h-6 w-6" aria-hidden="true" />
-            </Link>
-            <Link href="https://github.com/Hygraph" className="text-gray-400 hover:text-gray-500">
-              <span className="sr-only">GitHub</span>
-              <GitHubIcon className="h-6 w-6" aria-hidden="true" />
+              <InstagramIcon className="h-6 w-6" aria-hidden="true" />
             </Link>
           </div>
           <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">

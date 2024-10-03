@@ -1,7 +1,3 @@
-body {
-    @apply font-quicksand;
-}
-
 .product-slider {
     .swiper-button-next,
     .swiper-button-prev {
@@ -40,7 +36,10 @@ body {
         list-style: disc;
     }
     h1,h2,h3,h4,h5,h6 {
-        @apply text-xl font-bold mt-4 mb-2;
+        @apply text-xl font-bold my-2;
+    }
+    ul {
+        @apply ml-10;
     }
 }
 

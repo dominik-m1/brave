@@ -13,10 +13,6 @@ const seo = {
     type: 'website',
     url
   },
-  twitter: {
-    handle: '@Hygraphcom',
-    site: '@Hygraphcom'
-  }
 }
 
 export { seo as defaultSeo, url as defaultUrl }

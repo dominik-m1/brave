@@ -8,7 +8,7 @@ import ReactMarkdown from "react-markdown";
 
 function FooterPageData({ footerPageData }) {
     return (
-        <div className="mt-40 mb-20">
+        <div className="mt-36 mb-20">
             <SectionTitle title={footerPageData.title} />
             <div className="footer-menu max-w-2xl mx-auto">
                 <ReactMarkdown>
