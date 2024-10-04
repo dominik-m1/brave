@@ -6,9 +6,7 @@ interface ICategory {
     name: string;
     slug: string;
     isHighlighted: boolean;
-    categoryImage: {
-        url: string;
-    };
+    categoryImage: string;
 }
 
 interface IProps {
@@ -22,7 +20,7 @@ const HomepageCategories = ({ categories }: IProps) => {
                 <Link key={category.id} className="relative w-1/3 overflow-hidden" href={`category/${category.slug}`}>
                     <div className="relative w-full h-[600px] overflow-hidden">
                         <img
-                            src={category.categoryImage.url}
+                            src={category.categoryImage}
                             alt={`${category.name} thumbnail`}
                             className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 transform hover:scale-110"
                         />

@@ -5,11 +5,7 @@ export const getAboutUsPageDataQuery = gql`
         aboutUs {
             title
             description
-            image {
-                url
-                width
-                height
-            }
+            image
         }
     }
 `

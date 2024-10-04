@@ -4,12 +4,7 @@ export const getSingleLookbookQuery = gql`
   query SingleLookbookQuery($title: String!) {
     lookbooks(where: { title: $title }, locales:  [pl]) {
       title
-      image {
-        height
-        width
-        url
-        id
-      }
+      images
     }
   }
 `

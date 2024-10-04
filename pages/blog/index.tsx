@@ -5,7 +5,7 @@ import getBlogCategoriesList from "@/lib/get-blog-categories";
 
 function Blog({ blogCategories }) {
     return (
-        <section className="flex flex-col gap-6 p-6">
+        <section className="max-w-7xl mx-auto flex flex-col gap-6 p-6">
             {blogCategories.map(blogCategory => (
                 <Link
                     href={`/blog/${blogCategory.slug}`}

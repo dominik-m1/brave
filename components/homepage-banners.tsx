@@ -2,9 +2,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade, Autoplay } from 'swiper/modules';
 import 'swiper/swiper-bundle.css';
 interface IBanner {
-    banner: {
-        url: string;
-    };
+    banner: string;
     id: string;
 }
 
@@ -21,7 +19,7 @@ const HomepageBanners = ({ banners }: IProps) => {
                 effect="fade"
                 slidesPerView={1}
                 autoplay={{
-                    delay: 3000,
+                    delay: 5000,
                     disableOnInteraction: false,
                 }}
                 fadeEffect={{
@@ -31,10 +29,12 @@ const HomepageBanners = ({ banners }: IProps) => {
                 {banners.map((banner) => (
                     <SwiperSlide key={banner.id}>
                         <img
-                            src={banner.banner.url}
+                            src={banner.banner}
                             alt="BeBrave"
                             style={{
-                                width: '100%'
+                                width: '100%',
+                                height: `calc(100vh - 72px)`,
+                                objectFit: 'cover'
                             }}
                         />
                     </SwiperSlide>

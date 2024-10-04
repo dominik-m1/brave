@@ -8,11 +8,7 @@ interface IProps {
    aboutUs: {
        title: string;
        description: string;
-       image: {
-           url: string;
-           width: number;
-           height: number;
-       }
+       image: string;
    }
 }
 
@@ -25,10 +21,8 @@ function AboutUs({ aboutUs }: IProps) {
                     {aboutUs.description}
                 </ReactMarkdown>
             </p>
-            <Image
-                src={aboutUs.image.url}
-                width={aboutUs.image.width}
-                height={aboutUs.image.height}
+            <img
+                src={aboutUs.image}
                 alt="BeBrave"
                 className="mx-auto max-w-3xl my-20"
             />

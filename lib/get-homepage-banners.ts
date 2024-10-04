@@ -4,9 +4,7 @@ export const getHomepageBannersQuery = gql`
     query HomepageBannersQuery {
         homepageBanners {
             id
-            banner {
-                url
-            }
+            banner
         }
     }
 `

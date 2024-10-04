@@ -4,17 +4,15 @@ import getPageData from '@/lib/get-page-data'
 import SectionTitle from "@/components/ui/typography/sectionTitle";
 import getSingleLookbookByTitle from "@/lib/get-lookbook-by-title";
 import getLookbookList from "@/lib/get-lookbook-list";
-import Image from "next/image";
 
 function SingleLookbook({ lookbook }) {
     return (
         <div className="mt-40 mb-20">
             <SectionTitle title={lookbook.title} />
-
-            <div className="grid grid-cols-12 gap-4 mt-10">
-                {lookbook.image.map((img, index) => (
+            <div className="max-w-7xl mx-auto grid grid-cols-12 gap-4 mt-10">
+                {lookbook.images.map((img, index) => (
                     <div
-                        key={img.id}
+                        key={index}
                         className={`relative overflow-hidden rounded-lg shadow-lg ${
                             index % 7 === 0
                                 ? 'col-span-12 md:col-span-6 row-span-2'
@@ -23,12 +21,10 @@ function SingleLookbook({ lookbook }) {
                                     : 'col-span-6 md:col-span-3'
                         }`}
                     >
-                        <Image
-                            src={img.url}
+                        <img
+                            src={img}
                             alt={`BeBrave - ${lookbook.title} thumbnail`}
                             title={`BeBrave - ${lookbook.title}`}
-                            width={img.width}
-                            height={img.height}
                             className="w-full h-full object-cover"
                         />
                     </div>

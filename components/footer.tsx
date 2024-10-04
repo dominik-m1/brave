@@ -4,7 +4,7 @@ import { InstagramIcon } from '@/icons'
 
 function Footer({ categories = [], footerPages = [] }) {
   return (
-    <footer className="max-w-7xl mx-auto bg-white" aria-labelledby="footerHeading">
+    <footer className="mt-8 max-w-7xl mx-auto bg-white" aria-labelledby="footerHeading">
       <h2 id="footerHeading" className="sr-only">
         Footer
       </h2>
@@ -65,7 +65,7 @@ function Footer({ categories = [], footerPages = [] }) {
             </Link>
           </div>
           <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-            &copy; 2024 DMCorp. All rights reserved.
+            &copy; 2024 BeBrave. All rights reserved.
           </p>
         </div>
       </div>

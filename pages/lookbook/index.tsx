@@ -1,21 +1,18 @@
 import getPageData from "@/lib/get-page-data";
 import getLookbookList from "@/lib/get-lookbook-list";
-import Image from "next/image";
 import Link from 'next/link'
 
 function Lookbook({ lookbooks }) {
     return (
-        <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
+        <section className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-6">
             {lookbooks.map(lookbook => (
                 <Link
                     href={`/lookbook/${lookbook.title}`}
-                    key={lookbook.image[0].url}
+                    key={lookbook.images[0]}
                     className="group relative overflow-hidden rounded-lg shadow-lg transform transition duration-300 hover:scale-105"
                 >
-                    <Image
-                        src={lookbook.image[0].url}
-                        width={lookbook.image[0].width}
-                        height={lookbook.image[0].height}
+                    <img
+                        src={lookbook.images[0]}
                         alt={lookbook.title}
                         className="w-full h-full object-cover"
                     />

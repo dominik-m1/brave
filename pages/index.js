@@ -11,13 +11,15 @@ import getBlogPostsList from "@/lib/get-blog-posts-list";
 
 function IndexPage({ products, homepageBanners, highlightedCategories, lastThreePosts }) {
   return (
-      <main>
+      <>
         <HomepageBanners banners={homepageBanners} />
-        <SectionTitle title="NASZE PRODUKTY"/>
-        <ProductSlider products={products} />
-        <HomepageCategories categories={highlightedCategories}/>
-        <HomepageBlogPosts posts={lastThreePosts}/>
-      </main>
+          <div className="max-w-7xl mx-auto">
+              <SectionTitle title="NASZE PRODUKTY"/>
+              <ProductSlider products={products} />
+              <HomepageCategories categories={highlightedCategories}/>
+              <HomepageBlogPosts posts={lastThreePosts}/>
+          </div>
+      </>
   )
 }
 

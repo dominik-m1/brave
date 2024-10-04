@@ -6,7 +6,8 @@ import getBlogPostById from "@/lib/get-blog-post-by-id";
 import ReactMarkdown from "react-markdown";
 import Image from 'next/image'
 import Owner from "@/components/owner";
-import blog from "@/pages/blog";
+import Link from "next/link";
+import getBlogCategoriesList from "@/lib/get-blog-categories";
 
 interface IPost {
     id: string;
@@ -33,86 +34,120 @@ interface IPost {
 interface IProps {
     blogPost: IPost
 }
-function BlogPost({ blogPost }: IProps) {
+function BlogPost({ blogPost, lastFourPosts, blogCategories }: IProps) {
     const tags = blogPost.tags.split("/")
     return (
-        <section className="blog-post">
-            <div className="mt-20 mx-auto max-w-5xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div className="relative w-full h-64 md:h-auto md:w-full overflow-hidden shadow-lg">
-                    <Image
-                        src={blogPost.image}
-                        alt={blogPost.title}
-                        layout="fill"
-                        objectFit="cover"
-                        className="absolute inset-0 w-full h-full"
-                    />
-
-                    <div className="absolute bottom-0 left-0 p-2 space-x-2 bg-opacity-75 flex flex-wrap bg-transparent">
+        <section className="max-w-7xl mx-auto blog-post flex">
+            <div>
+                <div className="mt-20 mx-auto max-w-5xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="relative w-full h-64 md:h-auto md:w-full overflow-hidden shadow-lg">
+                        <img
+                            src={blogPost.image}
+                            alt={blogPost.title}
+                            className="absolute inset-0 w-full h-full object-cover"
+                        />
+                        <div className="absolute bottom-0 left-0 p-2 space-x-2 bg-opacity-75 flex flex-wrap bg-transparent">
                     <span
                         className="bg-red-600 text-white text-sm font-semibold py-1 px-2 mb-2">
                             {blogPost.tags}
                         </span>
-                    </div>
-                </div>
-
-                <div className="flex flex-col justify-center">
-                    <h1 className="text-3xl md:text-4xl font-bold mb-6">{blogPost.title}</h1>
-                    <ReactMarkdown className="prose prose-lg text-justify">
-                        {blogPost.content.markdown}
-                    </ReactMarkdown>
-                </div>
-            </div>
-            <div className="mx-auto max-w-5xl p-4">
-                {blogPost.additionalText.map(t => (
-                    <div key={t.subTitle} className="mt-6">
-                        <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.subTitle}</h2>
-                        <ReactMarkdown className="prose prose-lg text-justify">
-                            {t.description}
-                        </ReactMarkdown>
-                        <div
-                            className={`mt-6 grid gap-4 ${
-                                t.image.length === 1
-                                    ? 'grid-cols-1'
-                                    : t.image.length === 2
-                                        ? 'grid-cols-2'
-                                        : t.image.length === 3
-                                            ? 'grid-cols-3'
-                                            : t.image.length >= 4
-                                                ? 'grid-cols-4'
-                                                : ''
-                            }`}
-                        >
-                            {t.image.map((imgSrc, index) => (
-                                <div key={index} className="relative w-full h-64 overflow-hidden rounded-lg shadow-lg">
-                                    <Image
-                                        src={imgSrc}
-                                        alt={`Additional Image ${index + 1}`}
-                                        layout="fill"
-                                        objectFit="cover"
-                                        className="absolute inset-0 w-full h-full"
-                                    />
-                                </div>
-                            ))}
                         </div>
                     </div>
-                ))}
-                <div className="mt-4">
-                    {tags.map((tag, index) => (
-                        <span
-                            key={index}
-                            className="bg-red-600 text-white text-sm font-semibold py-1 px-2 rounded-lg mr-2">
+
+                    <div className="flex flex-col justify-center">
+                        <h1 className="text-3xl md:text-4xl font-bold mb-6">{blogPost.title}</h1>
+                        <ReactMarkdown className="prose prose-lg text-justify">
+                            {blogPost.content.markdown}
+                        </ReactMarkdown>
+                    </div>
+                </div>
+                <div className="mx-auto max-w-5xl p-4">
+                    {blogPost.additionalText.map(t => (
+                        <div key={t.subTitle} className="mt-6">
+                            <h2 className="text-3xl md:text-4xl font-bold mb-6">{t.subTitle}</h2>
+                            <ReactMarkdown className="prose prose-lg text-justify">
+                                {t.description}
+                            </ReactMarkdown>
+                            <div
+                                className={`mt-6 grid gap-4 ${
+                                    t.image.length === 1
+                                        ? 'grid-cols-1'
+                                        : t.image.length === 2
+                                            ? 'grid-cols-2'
+                                            : t.image.length === 3
+                                                ? 'grid-cols-3'
+                                                : t.image.length >= 4
+                                                    ? 'grid-cols-4'
+                                                    : ''
+                                }`}
+                            >
+                                {t.image.map((imgSrc, index) => (
+                                    <div key={index} className="relative w-full h-64 overflow-hidden rounded-lg shadow-lg">
+                                        <Image
+                                            src={imgSrc}
+                                            alt={`Additional Image ${index + 1}`}
+                                            layout="fill"
+                                            objectFit="cover"
+                                            className="absolute inset-0 w-full h-full"
+                                        />
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                    <div className="mt-4">
+                        {tags.map((tag, index) => (
+                            <span
+                                key={index}
+                                className="bg-red-600 text-white text-sm font-semibold py-1 px-2 rounded-lg mr-2">
                             {tag.trim()}
                         </span>
+                        ))}
+                    </div>
+                    <Owner
+                        name={blogPost.owner.name}
+                        description={blogPost.owner.description}
+                        imageUrl={blogPost.owner.imageUrl}
+                        instagramUrl={blogPost.owner.instagramUrl}
+                        mail={blogPost.owner.mail}
+                    />
+                </div>
+            </div>
+            <aside className="mt-20 w-1/4 p-4">
+                <h2 className="text-2xl font-bold mb-4">Kategorie</h2>
+                <div className="mb-4">
+                    {blogCategories.map(category => (
+                        <Link
+                            key={category.id}
+                            href={`/blog/${category.slug}`}
+                            className="block uppercase font-bold hover:text-red-600"
+                        >
+                             {category.name}
+                        </Link>
                     ))}
                 </div>
-                <Owner
-                    name={blogPost.owner.name}
-                    description={blogPost.owner.description}
-                    imageUrl={blogPost.owner.imageUrl}
-                    instagramUrl={blogPost.owner.instagramUrl}
-                    mail={blogPost.owner.mail}
-                />
-            </div>
+                <h2 className="text-2xl font-bold mb-4">Ostatnie posty</h2>
+                {lastFourPosts.map((post) => (
+                    <div key={post.id} className="border mb-4 rounded-lg">
+                        <Link
+                            href={`${post.id}`}
+                        >
+                            <div className="relative w-full h-32 overflow-hidden rounded-lg shadow-lg">
+                                <Image
+                                    src={post.image}
+                                    alt={post.title}
+                                    width={75}
+                                    height={150}
+                                    className="absolute inset-0 w-full h-full object-cover"
+                                />
+                            </div>
+                            <p className="block font-semibold text-lg p-4 hover:text-red-600">
+                                {post.title}
+                            </p>
+                        </Link>
+                    </div>
+                ))}
+            </aside>
         </section>
     );
 }
@@ -144,10 +179,19 @@ export async function getStaticProps({ locale, params }) {
         locale,
         id: params.id
     })
+    const { blogPosts } = await getBlogPostsList();
+
+    const { blogCategories } = await getBlogCategoriesList();
+
+    const lastFourPosts = blogPosts
+        .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+        .slice(0, 3);
 
     return {
         props: {
+            blogCategories,
             blogPost,
+            lastFourPosts,
             ...pageData
         }
     }

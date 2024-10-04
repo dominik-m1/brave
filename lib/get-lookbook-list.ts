@@ -4,18 +4,13 @@ export const getLookbookListQuery = gql`
     query GetLookbookList {
         lookbooks {
             title
-            image(first: 1) {
-                id
-                width
-                height
-                url
-            }
+            images
         }
     }
 `
 
 async function getLookbookList() {
-    const { lookbooks } = await hygraphClient.request(getLookbookListQuery)
+    const { lookbooks } = await hygraphClient.request(getLookbookListQuery);
 
     return { lookbooks }
 }

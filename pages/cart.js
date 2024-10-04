@@ -98,10 +98,10 @@ function Cart() {
           >
             <div className="w-3/5 flex flex-grow items-center">
               <div className="h-16 md:h-20 w-16 md:w-20 mr-4 bg-gray-50 p-1 rounded-lg">
-                <Image
-                  src={item.image.url}
-                  width={item.image.width}
-                  height={item.image.height}
+                <img
+                  src={item.image}
+                  alt={item.name}
+                  className="object-cover w-full h-full"
                 />
               </div>
               <div>

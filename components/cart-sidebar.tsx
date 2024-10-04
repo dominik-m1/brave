@@ -39,8 +39,8 @@ const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
                         {items.map((item) => (
                             <div key={item.id} className="flex items-center space-x-4 border-b pb-4">
                                 <div className="flex items-center w-48">
-                                    <Image
-                                        src={item.image.url}
+                                    <img
+                                        src={item.image}
                                         alt={item.name}
                                         width={100}
                                         height={100}

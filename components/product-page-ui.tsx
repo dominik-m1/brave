@@ -79,16 +79,14 @@ function ProductPageUI({ product }) {
             <div className="sticky top-28">
               {product.images.map((img, index) => (
                   <div
-                      key={img.id}
+                      key={index}
                       className="h-[100px] w-[70px] border flex items-center justify-center mb-4 cursor-pointer"
-                      onClick={() => scrollToImage(index)}  // Add onClick to scroll to image
+                      onClick={() => scrollToImage(index)}
                   >
-                    <Image
-                        src={img.url}
+                    <img
+                        src={img}
                         alt={`BeBrave - ${product.name} thumbnail`}
                         title={`BeBrave - ${product.name}`}
-                        width={img.width}
-                        height={img.height}
                     />
                   </div>
               ))}
@@ -97,14 +95,13 @@ function ProductPageUI({ product }) {
           <div className="mb-8 px-6 md:mb-0 lg:w-1/2">
             <div className="w-full overflow-hidden relative bg-gainsboro">
               {product.images.map((img, index) => (
-                  <Image
-                      key={img.id}
-                      src={img.url}
-                      height={img.height}
-                      width={img.width}
+                  <img
+                      key={index}
+                      src={img}
                       alt={product.name}
                       title={product.name}
-                      ref={(el) => (imageRefs.current[index] = el)} // Assign ref to each image
+                      ref={(el) => (imageRefs.current[index] = el)}
+                      className="mb-8"
                   />
               ))}
             </div>

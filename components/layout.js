@@ -24,7 +24,7 @@ function Layout({ children, footer, navigation }) {
                 exit="exit"
                 variants={pageTransition}
                 transition={{ type: 'tween', duration: 0.5 }}
-                className="max-w-7xl mx-auto mt-[72px]"
+                className="mt-[72px]"
             >
                 {children}
             </motion.div>
