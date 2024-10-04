@@ -1,10 +1,9 @@
-import * as React from 'react'
-
-import getPageData from '@/lib/get-page-data'
+import * as React from 'react';
+import getPageData from '@/lib/get-page-data';
 import getBlogPostsList from "@/lib/get-blog-posts-list";
 import getBlogPostById from "@/lib/get-blog-post-by-id";
 import ReactMarkdown from "react-markdown";
-import Image from 'next/image'
+import Image from 'next/image';
 import Owner from "@/components/owner";
 import Link from "next/link";
 import getBlogCategoriesList from "@/lib/get-blog-categories";
@@ -20,7 +19,7 @@ interface IPost {
     additionalText: {
         subTitle: string;
         description: string;
-        image: string[]
+        image: string[];
     }[];
     owner: {
         name: string;
@@ -28,29 +27,30 @@ interface IPost {
         instagramUrl: string;
         imageUrl: string;
         mail: string;
-    }
+    };
 }
 
 interface IProps {
-    blogPost: IPost
+    blogPost: IPost;
 }
+
 function BlogPost({ blogPost, lastFourPosts, blogCategories }: IProps) {
-    const tags = blogPost.tags.split("/")
+    const tags = blogPost.tags.split("/");
+
     return (
-        <section className="max-w-7xl mx-auto blog-post flex">
-            <div>
-                <div className="mt-20 mx-auto max-w-5xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8">
-                    <div className="relative w-full h-64 md:h-auto md:w-full overflow-hidden shadow-lg">
+        <section className="max-w-7xl mx-auto flex flex-col md:flex-row">
+            <div className="flex-grow">
+                <div className="mt-10 mx-auto max-w-5xl p-4 grid grid-cols-1 md:grid-cols-2 gap-8 md:mt-20">
+                    <div className="relative w-full h-64 md:h-auto overflow-hidden shadow-lg">
                         <img
                             src={blogPost.image}
                             alt={blogPost.title}
                             className="absolute inset-0 w-full h-full object-cover"
                         />
                         <div className="absolute bottom-0 left-0 p-2 space-x-2 bg-opacity-75 flex flex-wrap bg-transparent">
-                    <span
-                        className="bg-red-600 text-white text-sm font-semibold py-1 px-2 mb-2">
-                            {blogPost.tags}
-                        </span>
+                            <span className="bg-red-600 text-white text-sm font-semibold py-1 px-2 mb-2">
+                                {blogPost.tags}
+                            </span>
                         </div>
                     </div>
 
@@ -61,6 +61,7 @@ function BlogPost({ blogPost, lastFourPosts, blogCategories }: IProps) {
                         </ReactMarkdown>
                     </div>
                 </div>
+
                 <div className="mx-auto max-w-5xl p-4">
                     {blogPost.additionalText.map(t => (
                         <div key={t.subTitle} className="mt-6">
@@ -100,8 +101,8 @@ function BlogPost({ blogPost, lastFourPosts, blogCategories }: IProps) {
                             <span
                                 key={index}
                                 className="bg-red-600 text-white text-sm font-semibold py-1 px-2 rounded-lg mr-2">
-                            {tag.trim()}
-                        </span>
+                                {tag.trim()}
+                            </span>
                         ))}
                     </div>
                     <Owner
@@ -113,7 +114,8 @@ function BlogPost({ blogPost, lastFourPosts, blogCategories }: IProps) {
                     />
                 </div>
             </div>
-            <aside className="mt-20 w-1/4 p-4">
+
+            <aside className="mt-4 md:mt-0 w-full md:w-1/4 p-4 md:mt-20">
                 <h2 className="text-2xl font-bold mb-4">Kategorie</h2>
                 <div className="mb-4">
                     {blogCategories.map(category => (
@@ -122,16 +124,14 @@ function BlogPost({ blogPost, lastFourPosts, blogCategories }: IProps) {
                             href={`/blog/${category.slug}`}
                             className="block uppercase font-bold hover:text-red-600"
                         >
-                             {category.name}
+                            {category.name}
                         </Link>
                     ))}
                 </div>
                 <h2 className="text-2xl font-bold mb-4">Ostatnie posty</h2>
                 {lastFourPosts.map((post) => (
                     <div key={post.id} className="border mb-4 rounded-lg">
-                        <Link
-                            href={`${post.id}`}
-                        >
+                        <Link href={`${post.id}`}>
                             <div className="relative w-full h-32 overflow-hidden rounded-lg shadow-lg">
                                 <Image
                                     src={post.image}
@@ -153,7 +153,7 @@ function BlogPost({ blogPost, lastFourPosts, blogCategories }: IProps) {
 }
 
 export async function getStaticPaths({ locales }) {
-    let paths = []
+    let paths = [];
 
     for (const locale of locales) {
         const { blogPosts } = await getBlogPostsList();
@@ -161,24 +161,24 @@ export async function getStaticPaths({ locales }) {
         paths = [
             ...paths,
             ...blogPosts.map((post) => ({
-                params: { id: post.id},
+                params: { id: post.id },
                 locale
             }))
-        ]
+        ];
     }
 
     return {
         paths,
         fallback: false
-    }
+    };
 }
 
 export async function getStaticProps({ locale, params }) {
-    const pageData = await getPageData({ locale })
+    const pageData = await getPageData({ locale });
     const { blogPost } = await getBlogPostById({
         locale,
         id: params.id
-    })
+    });
     const { blogPosts } = await getBlogPostsList();
 
     const { blogCategories } = await getBlogCategoriesList();
@@ -194,7 +194,7 @@ export async function getStaticProps({ locale, params }) {
             lastFourPosts,
             ...pageData
         }
-    }
+    };
 }
 
-export default BlogPost
+export default BlogPost;

@@ -16,7 +16,7 @@ function AboutUs({ aboutUs }: IProps) {
     return (
         <section className="mt-28">
             <SectionTitle title={aboutUs.title}/>
-            <p className="mx-auto max-w-3xl text-justify text-base text-gray-500">
+            <p className="p-4 mx-auto max-w-3xl text-justify text-base text-gray-500">
                 <ReactMarkdown>
                     {aboutUs.description}
                 </ReactMarkdown>
@@ -24,7 +24,7 @@ function AboutUs({ aboutUs }: IProps) {
             <img
                 src={aboutUs.image}
                 alt="BeBrave"
-                className="mx-auto max-w-3xl my-20"
+                className="mx-auto max-w-full my-4 px-4 md:my-10 md:max-w-3xl"
             />
         </section>
     )

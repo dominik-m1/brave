@@ -26,6 +26,20 @@ const ProductSlider = ({products}: IProps) => {
             slidesPerView={4}
             navigation
             modules={[Navigation]}
+            breakpoints={{
+                640: {
+                    slidesPerView: 2,
+                },
+                768: {
+                    slidesPerView: 3,
+                },
+                1024: {
+                    slidesPerView: 4,
+                },
+                0: {
+                    slidesPerView: 1,
+                },
+            }}
         >
             {products.map((product) => (
                 <SwiperSlide key={product.id}>

@@ -76,7 +76,7 @@ function ProductPageUI({ product }) {
       <>
         <div className="mt-28 max-w-7xl mx-auto lg:flex">
           <div className="w-[70px]">
-            <div className="sticky top-28">
+            <div className="sticky top-28 hidden md:block">
               {product.images.map((img, index) => (
                   <div
                       key={index}

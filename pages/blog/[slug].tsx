@@ -25,7 +25,7 @@ export const getExcerpt = (content: string, length: number = 100) => {
 function BlogPostsByCategory({ blogPosts }: IProps) {
 
     return (
-        <div className="max-w-7xl mx-auto mt-36 mb-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+        <div className="px-4 max-w-7xl mx-auto mt-36 mb-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
                 <Link
                     href={`/blog-post/${post.id}`}

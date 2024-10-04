@@ -7,9 +7,9 @@ import getLookbookList from "@/lib/get-lookbook-list";
 
 function SingleLookbook({ lookbook }) {
     return (
-        <div className="mt-40 mb-20">
+        <div className="mt-32 mb-20 md:mt-40">
             <SectionTitle title={lookbook.title} />
-            <div className="max-w-7xl mx-auto grid grid-cols-12 gap-4 mt-10">
+            <div className="max-w-7xl mx-auto grid grid-cols-12 gap-4 mt-10 p-4 md:p-0">
                 {lookbook.images.map((img, index) => (
                     <div
                         key={index}

@@ -21,7 +21,7 @@ const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
 
     return (
         <div
-            className={`fixed top-0 right-0 h-full w-[400px] bg-white shadow-lg z-20 transform transition-transform duration-300 ease-in-out ${
+            className={`fixed top-0 right-0 h-full bg-white shadow-lg z-20 transform transition-transform duration-300 ease-in-out w-full md:w-[400px] ${
                 items.length && isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
             }`}
         >

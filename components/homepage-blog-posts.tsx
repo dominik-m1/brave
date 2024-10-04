@@ -6,7 +6,7 @@ const HomepageBlogPosts = ({posts}) => {
     return (
         <section>
             <SectionTitle title="NIE PRZEGAP OSTATNICH WPISÓW NA BLOGU"/>
-            <div className="my-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div className="my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-4 md:p-0 md:my-20">
                 {posts.map((post) => (
                     <Link
                         href={`/blog-post/${post.id}`}

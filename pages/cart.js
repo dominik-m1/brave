@@ -85,10 +85,10 @@ function Cart() {
     }
   }
 
-  if (isEmpty) return <p>Your cart is empty</p>
+  if (isEmpty) return <p className="text-center mt-28 font-bold text-xl">Twój koszyk jest pusty</p>
 
   return (
-    <section className="max-w-7xl mx-auto mt-28">
+    <section className="max-w-7xl mx-auto mt-28 p-4 md:p-0">
       <SEO title="Cart" />
       {items.map((item) => {
         return (
