@@ -30,7 +30,7 @@ function AboutUs({ aboutUs }: IProps) {
     )
 }
 
-export async function getStaticProps({ locale, params }) {
+export async function getStaticProps({ locale }) {
     const pageData = await getPageData({ locale })
     const { aboutUs } = await getAboutUsPageData({
         locale,
