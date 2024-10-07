@@ -16,11 +16,11 @@ function AboutUs({ aboutUs }: IProps) {
     return (
         <section className="mt-28">
             <SectionTitle title={aboutUs.title}/>
-            <p className="p-4 mx-auto max-w-3xl text-justify text-base text-gray-500">
+            <div className="p-4 mx-auto max-w-3xl text-justify text-base text-gray-500">
                 <ReactMarkdown>
                     {aboutUs.description}
                 </ReactMarkdown>
-            </p>
+            </div>
             <img
                 src={aboutUs.image}
                 alt="BeBrave"

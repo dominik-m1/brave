@@ -14,9 +14,7 @@ export default async (req, res) => {
             product(where: { id: $id }, locales: [$locale]) {
               productId: id
               description
-              images(first: 1) {
-                url
-              }
+              images
               name
               price
             }

@@ -1,10 +1,8 @@
 import * as React from 'react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCart } from 'react-use-cart'
 import { loadStripe } from '@stripe/stripe-js'
-
 import {
   ChevronDownSmallIcon,
   ChevronUpSmallIcon,
@@ -15,16 +13,19 @@ import getPageData from '@/lib/get-page-data'
 import SEO from '@/components/seo'
 import { useSettingsContext } from '@/context/settings'
 import useSubmissionState from 'hooks/use-form-submission'
+import CourierSearch from "@/components/courier-search";
+import {useState} from "react";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
 function Cart() {
+  const [deliveryPrice, setDeliveryPrice] = useState(null);
   const {
     cartTotal,
     isEmpty,
     items,
     removeItem,
-    updateItemQuantity
+    updateItemQuantity,
   } = useCart()
   const router = useRouter()
   const { activeCurrency } = useSettingsContext()
@@ -33,7 +34,8 @@ function Cart() {
     setSubmissionLoading,
     submissionError,
     submissionLoading,
-    submissionState
+    submissionState,
+    setSubmissionSuccess
   } = useSubmissionState()
 
   const decrementItemQuantity = (item) =>
@@ -46,7 +48,7 @@ function Cart() {
     try {
       setSubmissionLoading()
 
-      const stripe = await stripePromise
+      const stripe = await stripePromise;
 
       const res = await fetch('/api/stripe/create-checkout-session', {
         method: 'POST',
@@ -58,9 +60,21 @@ function Cart() {
           currency: activeCurrency.code,
           items,
           locale: router.locale,
-          success_url: `${window.location.origin}/success`
+          success_url: `${window.location.origin}/success`,
+          shipping_options: [
+            {
+              shipping_rate_data: {
+                type: 'fixed_amount',
+                fixed_amount: {
+                  amount: Math.round(deliveryPrice * 100),
+                  currency: 'pln',
+                },
+                display_name: 'Wybrana dostawa',
+              },
+            },
+          ],
         })
-      })
+      });
 
       if (!res.ok) {
         const error = new Error(
@@ -160,10 +174,23 @@ function Cart() {
           </div>
         )
       })}
+      <CourierSearch onSearch={setDeliveryPrice} />
+
       <div className="mt-3 md:mt-6 py-3 md:py-6 border-t-2 border-gray-50">
         <div className="flex flex-col items-end">
-          <div className="flex flex-col items-end mb-3">
-            <span className="text-gray-700">Łączna kwota</span>
+          {deliveryPrice && (
+              <div className="flex items-end mb-3">
+                <span className="text-gray-700 mr-4">Koszt dostawy:</span>
+                <span className="text-xl font-bold">
+                  {formatCurrencyValue({
+                    currency: activeCurrency,
+                    value: deliveryPrice * 100
+                  })}
+                </span>
+              </div>
+          )}
+          <div className="flex items-end mb-3">
+            <span className="text-gray-700 mr-4">Łączna kwota produktów:</span>
             <span className="text-xl font-bold">
               {formatCurrencyValue({
                 currency: activeCurrency,
@@ -171,40 +198,51 @@ function Cart() {
               })}
             </span>
           </div>
-          <div className="w-[200px] h-12 flex justify-center items-center uppercase relative group overflow-hidden border border-black transition-colors duration-500">
-            <Link
-                href="/cart"
-                className="flex font-bold items-center w-full h-full justify-center z-10 text-white group-hover:text-black "
-                onClick={handleClick}
-            >
-              <span className="mr-1">Zamów - </span>
-              <span>
-                {formatCurrencyValue({
-                  currency: activeCurrency,
-                  value: cartTotal,
-                })}
-              </span>
-            </Link>
-
+          <div className={`w-[200px] h-12 flex justify-center items-center uppercase relative group overflow-hidden border border-black transition-colors duration-500 ${deliveryPrice ? '' : 'cursor-not-allowed'}`}>
+            {deliveryPrice ? (
+                <Link
+                    href="/cart"
+                    className="flex font-bold items-center w-full h-full justify-center z-10 text-white group-hover:text-black"
+                    onClick={handleClick}
+                >
+                  <span className="mr-1">Zamów - </span>
+                  <span>
+                  {formatCurrencyValue({
+                    currency: activeCurrency,
+                    value: cartTotal + deliveryPrice * 100,
+                  })}
+                </span>
+                </Link>
+            ) : (
+                <p className="flex font-bold items-center w-full h-full justify-center z-10 text-white text-center">
+                 Wybierz sposób dostawy
+                </p>
+            )}
             {/* Sliding background effect */}
             <div className="absolute inset-0 bg-black transition-transform duration-500 ease-out group-hover:translate-x-full"></div>
             <div className="absolute inset-0 bg-white transition-transform duration-500 ease-out translate-x-[-100%] group-hover:translate-x-0"></div>
 
             {/* Font color transition and border */}
             <div className="absolute inset-0 text-black transition-colors duration-500 ease-out flex justify-center items-center z-0 group-hover:text-black group-hover:border-black">
-              <Link
-                  href="/cart"
-                  className="flex items-center w-full h-full justify-center font-bold"
-                  onClick={handleClick}
-              >
-                <span className="mr-1">Zamów - </span>
-                <span>
-                {formatCurrencyValue({
-                  currency: activeCurrency,
-                  value: cartTotal,
-                })}
-              </span>
-              </Link>
+              {deliveryPrice ? (
+                  <Link
+                      href="/cart"
+                      className="flex items-center w-full h-full justify-center font-bold"
+                      onClick={handleClick}
+                  >
+                    <span className="mr-1">Zamów - </span>
+                    <span>
+                      {formatCurrencyValue({
+                        currency: activeCurrency,
+                        value: cartTotal + deliveryPrice * 100,
+                      })}
+                    </span>
+                  </Link>
+              ) : (
+                  <p className="flex items-center w-full h-full justify-center font-bold text-center text-black">
+                    Wybierz sposób dostawy
+                  </p>
+              )}
             </div>
           </div>
         </div>

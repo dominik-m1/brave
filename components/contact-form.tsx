@@ -23,9 +23,9 @@ const ContactForm = () => {
     };
 
     return (
-        <section className="mx-4 max-w-2xl mx-auto p-6 bg-white shadow-md rounded-lg mb-20">
+        <section className="mx-auto max-w-2xl mx-auto p-6 bg-white rounded-lg mb-20">
             <form
-                className="space-y-4"
+                className="space-y-4 p-8 shadow-2xl"
                 onSubmit={handleSubmit(onSubmit)}
             >
                 <div className="grid gap-4 md:grid-cols-2">
@@ -74,11 +74,9 @@ const ContactForm = () => {
                         Wyślij wiadomość
                     </button>
 
-                    {/* Sliding background effect */}
                     <div className="absolute inset-0 bg-black transition-transform duration-500 ease-out group-hover:translate-x-full"></div>
                     <div className="absolute inset-0 bg-white transition-transform duration-500 ease-out translate-x-[-100%] group-hover:translate-x-0"></div>
 
-                    {/* Font color transition and border */}
                     <div className="absolute inset-0 text-black transition-colors duration-500 ease-out flex justify-center items-center z-0 group-hover:text-black group-hover:border-black">
                         <button
                             type="submit"
