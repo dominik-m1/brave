@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useCart } from 'react-use-cart'
+import { useCart, Item } from 'react-use-cart'
 import { loadStripe } from '@stripe/stripe-js'
 import {
   ChevronDownSmallIcon,
@@ -18,6 +18,7 @@ import {useState} from "react";
 
 const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
 
+
 function Cart() {
   const [deliveryPrice, setDeliveryPrice] = useState(null);
   const {
@@ -33,16 +34,15 @@ function Cart() {
     setSubmissionError,
     setSubmissionLoading,
     submissionError,
-    submissionLoading,
     submissionState,
     setSubmissionSuccess
   } = useSubmissionState()
 
-  const decrementItemQuantity = (item) =>
-    updateItemQuantity(item.id, item.quantity - 1)
+  const decrementItemQuantity = (item: Item) =>
+      updateItemQuantity(item.id, item.quantity! - 1);
 
-  const incrementItemQuantity = (item) =>
-    updateItemQuantity(item.id, item.quantity + 1)
+  const incrementItemQuantity = (item: Item) =>
+      updateItemQuantity(item.id, item.quantity! + 1);
 
   const handleClick = async () => {
     try {
@@ -130,7 +130,6 @@ function Cart() {
                 <button
                   className="text-gray-400 hover:text-indigo-600 text-xs flex items-center focus:outline-none"
                   onClick={() => removeItem(item.id)}
-                  disabled={submissionLoading}
                 >
                   <XSmallIcon className="h-3 w-3 mr-2" />
                   USUŃ
@@ -141,7 +140,6 @@ function Cart() {
               <button
                 className="text-gray-400 hover:text-indigo-600 focus:outline-none p-1"
                 onClick={() => incrementItemQuantity(item)}
-                disabled={submissionLoading}
               >
                 <ChevronUpSmallIcon className="h-4 w-4" />
               </button>
@@ -149,7 +147,6 @@ function Cart() {
               <button
                 className="text-gray-400 hover:text-indigo-600 focus:outline-none p-1"
                 onClick={() => decrementItemQuantity(item)}
-                disabled={submissionLoading}
               >
                 <ChevronDownSmallIcon className="h-4 w-4" />
               </button>

@@ -1,22 +1,27 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { formatCurrencyValue } from '@/utils/format-currency-value';
-import {useCart} from "react-use-cart";
+import {useCart, Item} from "react-use-cart";
 import {ChevronDownSmallIcon, ChevronUpSmallIcon, XSmallIcon} from "@/icons";
-const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
+
+interface IProps {
+    onClick: () => void;
+    activeCurrency: string;
+    isSidebarOpen: boolean;
+}
+
+const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }: IProps) => {
     const {
         items,
         cartTotal,
         removeItem,
-        submissionLoading,
         updateItemQuantity
     } = useCart()
 
-    const decrementItemQuantity = (item) =>
-        updateItemQuantity(item.id, item.quantity - 1)
+    const decrementItemQuantity = (item: Item) =>
+        updateItemQuantity(item.id, item.quantity - 1);
 
-    const incrementItemQuantity = (item) =>
-        updateItemQuantity(item.id, item.quantity + 1)
+    const incrementItemQuantity = (item: Item) =>
+        updateItemQuantity(item.id, item.quantity + 1);
 
 
     return (
@@ -70,7 +75,6 @@ const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
                                     <button
                                         className="text-gray-400 hover:text-indigo-600 focus:outline-none p-1"
                                         onClick={() => incrementItemQuantity(item)}
-                                        disabled={submissionLoading}
                                     >
                                         <ChevronUpSmallIcon className="h-4 w-4" />
                                     </button>
@@ -78,7 +82,6 @@ const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
                                     <button
                                         className="text-gray-400 hover:text-indigo-600 focus:outline-none p-1"
                                         onClick={() => decrementItemQuantity(item)}
-                                        disabled={submissionLoading}
                                     >
                                         <ChevronDownSmallIcon className="h-4 w-4" />
                                     </button>
@@ -87,7 +90,6 @@ const CartSidebar = ({ onClick, activeCurrency, isSidebarOpen }) => {
                                     <button
                                         className="text-gray-400 hover:text-indigo-600 text-xs flex items-center focus:outline-none"
                                         onClick={() => removeItem(item.id)}
-                                        disabled={submissionLoading}
                                     >
                                         <XSmallIcon className="h-3 w-3 mr-2" />
                                         USUŃ
